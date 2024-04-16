@@ -9,7 +9,7 @@
   numpy,
   scipy,
   cvxopt,
-  #slycot,
+  slycot,
   pytest,
   pytest-timeout,
 }:
@@ -40,7 +40,7 @@ buildPythonPackage rec {
 
   passthru.optional-dependencies = {
     cvxopt = [ cvxopt ];
-    #slycot = [ slycot ];
+    slycot = [ slycot ];
     test = [
       pytest
       pytest-timeout
@@ -54,6 +54,6 @@ buildPythonPackage rec {
     homepage = "https://github.com/python-control/python-control";
     changelog = "https://github.com/python-control/python-control/blob/${src.rev}/ChangeLog";
     license = licenses.bsd3;
-    maintainers = with maintainers; [ ];
+    maintainers = with maintainers; [ djacu ];
   };
 }
