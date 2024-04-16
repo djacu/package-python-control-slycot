@@ -49,5 +49,17 @@
         setuptools-scm = pkgs.python3Packages.setuptools-scm;
         wheel = pkgs.python3Packages.wheel;
       };
+
+      packages.x86_64-linux.slycot = pkgs.callPackage ./slycot.nix {
+        buildPythonPackage = pkgs.python3Packages.buildPythonPackage;
+        numpy = pkgs.python3Packages.numpy;
+        setuptools = pkgs.python3Packages.setuptools;
+        setuptools-scm = pkgs.python3Packages.setuptools-scm;
+        wheel = pkgs.python3Packages.wheel;
+        scikit-build = pkgs.python3Packages.scikit-build;
+        gfortran12 = pkgs.gfortran12;
+        blas = pkgs.blas;
+        lapack = pkgs.lapack;
+      };
     };
 }
