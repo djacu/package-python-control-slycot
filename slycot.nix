@@ -29,7 +29,7 @@ buildPythonPackage rec {
   cmakeFlags = [
     "-D CMAKE_MODULE_PATH=${scikit-build}/lib/python3.11/site-packages/skbuild/resources/cmake/"
     "-D BLAS_LIBRARIES=${blas}/lib/"
-    "-D LAPACK_LIBRARIES=${lapack}/lib/liblapack"
+    "-D LAPACK_LIBRARIES=${lapack}/lib/"
   ];
 
   nativeBuildInputs = [
@@ -48,6 +48,10 @@ buildPythonPackage rec {
     blas
     lapack
   ];
+
+  postPatch = ''
+    substituteInPlace pyproject.toml --replace-fail '"cmake>=3.14",' ""
+  '';
 
   preBuild = ''
     cd /build/source
